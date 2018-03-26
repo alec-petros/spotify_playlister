@@ -9,6 +9,13 @@
   </head>
 
   <body>
+
+    <% if !logged_in? %>
+      <%= link_to "Login", "/login", method: "get" %>
+    <% else %>
+      <%= link_to "Logout", "/logout", method: "get" %>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
