@@ -1,8 +1,16 @@
-<h1>Track</h1>
-<%= @track.name %><br>
+<h1><%= @track.name %></h1>
+<br>
 <%= @track.artist.name %><br>
+<label>Genres:</label>
 <ul>
   <% @track.artist.genres.each do |genre| %>
-    <li><%= genre.name %></li>
+    <li><%= link_to genre.name, genre %></li>
+  <% end %>
+</ul>
+<br>
+<label>Recent Playlists:</label>
+<ul>
+  <% @track.recent_playlists.each do |playlist| %>
+    <li><%= link_to playlist.name, playlist %></li>
   <% end %>
 </ul>

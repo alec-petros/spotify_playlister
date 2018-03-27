@@ -1,2 +1,8 @@
-<h1>Genre:</h1>
-<%= @genre.name %>
+<h1><%= @genre.name %></h1>
+<br>
+<label>Recent Playlists:</label>
+<ul>
+  <% @genre.recent_playlists.each do |playlist| %>
+    <li><%= link_to playlist.name, playlist %></li>
+  <% end %>
+</ul>

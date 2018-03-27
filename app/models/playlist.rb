@@ -47,4 +47,8 @@ class Playlist < ApplicationRecord
       self.genres << Genre.find_or_create_by(name: genre)
     end
   end
+  # 
+  # def belongs_to_current_user
+  #   user_id == session[:user_id]
+  # end
 end

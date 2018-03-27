@@ -59,7 +59,6 @@ class PlaylistsController < ApplicationController
   end
 
   def create
-    byebug
     @playlist = Playlist.new(name: params[:playlist][:name], user_id: session[:user_id])
     @playlist.render_attributes(params[:playlist][:artists_attributes], params[:playlist][:tracks_attributes], params[:playlist][:genres])
     @playlist.save

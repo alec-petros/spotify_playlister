@@ -3,6 +3,8 @@ class Artist < ApplicationRecord
   has_and_belongs_to_many :genres
   has_and_belongs_to_many :playlists
 
+  include PlaylistHelpers
+
   def self.find_all_artists(name)
     RSpotify::Artist.search(name)
   end
