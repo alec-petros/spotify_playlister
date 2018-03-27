@@ -1,0 +1,15 @@
+<%= form_for @playlist do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <br>
+  <%= f.label "Artists (Separate by commas)" %>
+  <%= f.text_field :artists, value: "" %>
+  <br>
+  <%= f.label "Tracks (Separate by commas)" %>
+  <%= f.text_field :tracks, value: "" %>
+  <br>
+  <%= f.label "Genres (Separate by commas)" %>
+  <%= f.text_field :genres, value: "" %>
+  <br>
+  <%= f.submit "Create Playlist" %>
+<% end %>

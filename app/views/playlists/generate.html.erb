@@ -1,0 +1,6 @@
+<h1><%= @playlist.name %></h1>
+<ul>
+  <% @playlist_array.each do |track| %>
+    <li><%= "#{track.name} - #{track.artists[0].name}" %></li>
+  <% end %>
+</ul>

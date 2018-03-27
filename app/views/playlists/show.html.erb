@@ -1,0 +1,27 @@
+<h2><%= @playlist.name %></h2>
+<h3>By <%= @playlist.user.display_name %></h3>
+<label>Artists</label>
+<ul>
+  <% @playlist.artists.each do |artist| %>
+    <li><%= link_to artist.name, artist %></li>
+  <% end %>
+</ul>
+<label>Tracks</label>
+<ul>
+  <% @playlist.tracks.each do |track| %>
+    <li><%= link_to track.name, track %></li>
+  <% end %>
+</ul>
+<label>Genres</label>
+<ul>
+  <% @playlist.genres.each do |genre| %>
+    <li><%= link_to genre.name, genre %></li>
+  <% end %>
+</ul>
+
+<%= form_tag "/playlists/#{@playlist.id}/generate", method: "get" do %>
+  <%= label_tag "Number Of Tracks" %>
+  <%= number_field_tag :num %>
+  <br>
+  <%= submit_tag "Generate Playlist" %>
+<% end %>
