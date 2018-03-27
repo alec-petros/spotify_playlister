@@ -12,5 +12,6 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy'
   get '/playlists/:id/generate', to: 'playlists#generate'
   post 'playlists/fix', to: 'playlists#fix'
+  post 'playlists/:id/edit_fix', to: 'playlists#edit_fix'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

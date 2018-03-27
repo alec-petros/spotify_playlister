@@ -1,6 +1,6 @@
-<h1>Fix Seeds</h1>
+<h1>Edit Fix Seeds</h1>
 
-<%= form_for @playlist do |f| %>
+<%= form_for @playlist, url: {action: "update"} do |f| %>
   <%= f.hidden_field :name, value: "#{@playlist.name}" %>
   <%= f.hidden_field :genres, value: "#{@genres}" %>
 
