@@ -4,6 +4,7 @@ class Playlist < ApplicationRecord
   has_and_belongs_to_many :tracks
   has_and_belongs_to_many :artists
   has_and_belongs_to_many :genres
+  accepts_nested_attributes_for :tracks, :artists
 
   def generate
     args = {}
@@ -16,7 +17,6 @@ class Playlist < ApplicationRecord
     if !genres.empty?
       args[:seed_genres] = genres.map(&:name).map(&:downcase)
     end
-    byebug
     RSpotify::Recommendations.generate(args)
   end
 end

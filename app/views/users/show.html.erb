@@ -1,2 +1,9 @@
 <h1><%= @user.display_name %></h1>
 <h3><%= @user.username %></h3>
+<br>
+<h3>User's Playlists</h3>
+<ul>
+  <% @user.playlists.each do |playlist| %>
+    <li><%= link_to playlist.name, playlist %></li>
+  <% end %>
+</ul>

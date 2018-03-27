@@ -2,7 +2,7 @@
 <%= @track.name %><br>
 <%= @track.artist.name %><br>
 <ul>
-<% @track.artist.genres.each do |genre| %>
-  <li><%= genre.name %></li>
-<% end %>
+  <% @track.artist.genres.each do |genre| %>
+    <li><%= genre.name %></li>
+  <% end %>
 </ul>

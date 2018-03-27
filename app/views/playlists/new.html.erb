@@ -1,15 +1,15 @@
-<%= form_for @playlist do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+<%= form_tag '/playlists/fix', method: "post" do %>
+  <%= label_tag :name %>
+  <%= text_field_tag :name %>
   <br>
-  <%= f.label "Artists (Separate by commas)" %>
-  <%= f.text_field :artists, value: "" %>
+  <%= label_tag "Artists (Separate by commas)" %>
+  <%= text_field_tag :artists %>
   <br>
-  <%= f.label "Tracks (Separate by commas)" %>
-  <%= f.text_field :tracks, value: "" %>
+  <%= label_tag "Tracks (Separate by commas)" %>
+  <%= text_field_tag :tracks %>
   <br>
-  <%= f.label "Genres (Separate by commas)" %>
-  <%= f.text_field :genres, value: "" %>
+  <%= label_tag "Genres (Separate by commas)" %>
+  <%= text_field_tag :genres %>
   <br>
-  <%= f.submit "Create Playlist" %>
+  <%= submit_tag "Create Seed" %>
 <% end %>

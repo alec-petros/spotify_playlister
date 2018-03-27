@@ -3,23 +3,26 @@ class Artist < ApplicationRecord
   has_and_belongs_to_many :genres
   has_and_belongs_to_many :playlists
 
-  def self.find_artist(name)
-    artist = Artist.find_by(name: name)
+  def self.find_all_artists(name)
+    RSpotify::Artist.search(name)
+  end
+
+  def self.find_artist(spot_id)
+    artist = Artist.find_by(spot_id: spot_id)
     if !artist
-      artist = spot_artist_search(name)
+      artist = spot_artist_find(spot_id)
     end
     artist
   end
 
-  def self.spot_artist_search(name)
-    artist = RSpotify::Artist.search(name)[0]
-    if artist
-      output = Artist.new(name: artist.name, spot_id: artist.id)
-      artist.genres.each do |genre|
-        output.genres << Genre.find_or_create_by(name: genre)
-      end
-      output.save
+  def self.spot_artist_find(spot_id)
+    # byebug
+    artist = RSpotify::Artist.find(spot_id)
+    output = Artist.new(name: artist.name, spot_id: artist.id)
+    artist.genres.each do |genre|
+      output.genres << Genre.find_or_create_by(name: genre)
     end
+    output.save
     return output
   end
 
