@@ -1,7 +1,11 @@
-<h1>New Playlists</h1>
+<h1>Playlists</h1>
 <h3>Sort By:</h3>
+<%= form_tag playlists_path, method: "get" do %>
+  <%= select_tag :option, options_for_select(["Recent", "Popular All-Time", "Hot"]) %>
+  <%= submit_tag "Filter" %>
+<% end %>
 <ul>
   <% @playlists.each do |playlist| %>
-    <li><%= link_to playlist.name, playlist %></li>
+    <li style="font-size:30px"><%= link_to playlist.name.downcase, playlist %></li>
   <% end %>
 </ul>

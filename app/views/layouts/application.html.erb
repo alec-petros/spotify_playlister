@@ -9,14 +9,17 @@
   </head>
 
   <body>
-    <%= link_to 'Home', '/' %>
-    <%= link_to 'Profile', "/users/#{session[:user_id]}" %>
-    <%= link_to "New Playlist", "/playlists/new" %>
-    <% if !logged_in? %>
-      <%= link_to "Login", "/login", method: "get" %>
-    <% else %>
-      <%= link_to "Logout", "/logout", method: "get" %>
-    <% end %>
+    <div class="sidebar">
+      <%= link_to 'Home', '/' %><br>
+      <%= link_to 'Profile', "/users/#{session[:user_id]}" %><br>
+      <%= link_to "New Playlist", "/playlists/new" %><br>
+      <% if !logged_in? %>
+        <%= link_to "Login", "/login", method: "get" %>
+      <% else %>
+        <%= link_to "Logout", "/logout", method: "get" %>
+      <% end %>
+    </div>
+
 
 
     <%= yield %>

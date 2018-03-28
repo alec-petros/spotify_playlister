@@ -4,7 +4,14 @@ class PlaylistsController < ApplicationController
   skip_before_action :require_login, only: [:index]
 
   def index
-    @playlists = Playlist.all.order("created_at DESC")
+    case params[:option]
+    when "Hot"
+      @playlists = Playlist.all.order("comments_count DESC").limit(10)
+    when "Recent"
+      @playlists = Playlist.all.order("created_at DESC").limit(10)
+    else
+      @playlists = Playlist.all.order("created_at DESC").limit(10)
+    end
   end
 
   def new
