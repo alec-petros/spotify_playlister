@@ -1,0 +1,20 @@
+
+<nav class="navbar navbar-light" style="background-color: #000000;">
+<a class="navbar-brand" id="logo" href="/" style="color: #f1edf7;"><strong>Spotify</strong></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="/users/<%= "#{session[:user_id]}" %>" style="color: #f1edf7;" >Profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/playlists/new" style="color: #f1edf7;" >New Playlist</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/logout" style="color: #f1edf7;">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>

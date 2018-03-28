@@ -1,11 +1,15 @@
+<div class="center jumbotron">
+  <h1>Sign In</h1><br>
 
-
-<%= form_tag login_path, method: "post" do %>
-  <%= label_tag :username %>
+<font color=#ffffff><%= form_tag login_path, method: "post" do %>
+  <p id="fields"><%= label_tag :username %></p>
   <%= text_field_tag :username %>
   <br>
-  <%= label_tag :password %>
+  <br>
+  <p id="fields"><%= label_tag :password %></p>
   <%= password_field_tag :password %>
   <br>
-  <%= submit_tag "Login" %>
+  <br>
+  <%= submit_tag "Login", class: "btn btn-primary btn-xlarge" %>
 <% end %>
+</div>
