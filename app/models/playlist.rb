@@ -6,6 +6,9 @@ class Playlist < ApplicationRecord
   has_and_belongs_to_many :genres
   accepts_nested_attributes_for :tracks, :artists
 
+  validates_length_of :name, minimum: 3, maximum: 30
+  validates :user_id, presence: true
+
   def generate(amt)
     args = {limit: amt}
     if !tracks.empty?
@@ -21,17 +24,17 @@ class Playlist < ApplicationRecord
   end
 
   def tracks_string
-    output = tracks.map(&:name).join(", ")
+    output = tracks.map(&:name).join(", ") unless !tracks
     output
   end
 
   def artists_string
-    output = artists.map(&:name).join(", ")
+    output = artists.map(&:name).join(", ") unless !artists
     output
   end
 
   def genres_string
-    output = genres.map(&:name).join(", ")
+    output = genres.map(&:name).join(", ") unless !genres
     output
   end
 
@@ -52,8 +55,20 @@ class Playlist < ApplicationRecord
       end
     end
   end
-  #
-  # def belongs_to_current_user
-  #   user_id == session[:user_id]
-  # end
+
+  def prep_artists(params)
+    self.artists.delete_all unless !artists
+    params[:artists].split(", ").map {|artist| Artist.find_all_artists(artist)}
+  end
+
+  def prep_tracks(params)
+    self.tracks.delete_all unless !tracks
+    params[:tracks].split(", ").map {|track| Track.find_all_tracks(track)}
+  end
+
+  def prep_genres(params)
+    self.genres.delete_all unless !genres
+    params[:genres]
+  end
+
 end

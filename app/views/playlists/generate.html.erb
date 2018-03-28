@@ -8,7 +8,6 @@
 <% else %>
   <p><%= link_to 'Sign in with Spotify to create a Spotify playlist', '/auth/spotify' %></p>
 <% end %>
-
 <ul>
   <% @playlist_array.each do |track| %>
     <li><%= "#{track.name} - #{track.artists[0].name}" %></li>

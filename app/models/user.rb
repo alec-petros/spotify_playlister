@@ -3,4 +3,5 @@ class User < ApplicationRecord
   has_many :playlists
   has_many :comments
   serialize :spot_hash, Hash
+  validates :username, uniqueness: true
 end

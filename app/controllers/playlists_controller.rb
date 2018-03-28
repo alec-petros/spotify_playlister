@@ -36,37 +36,12 @@ class PlaylistsController < ApplicationController
 
   def edit_fix
     set_playlist
-    @playlist.artists.delete_all
-    @playlist.tracks.delete_all
-    @playlist.genres.delete_all
-    artists = params[:artists].split(", ")
-    tracks = params[:tracks].split(", ")
-    @genres = params[:genres]
-    @track_arr = tracks.map {|track| Track.find_all_tracks(track)}
-    @artist_arr = artists.map {|artist| Artist.find_all_artists(artist)}
-    @track_arr.count.times do
-      @playlist.tracks.build
-    end
-    @artist_arr.count.times do
-      @playlist.artists.build
-    end
+    prepare_fix
   end
 
   def fix
     @playlist = Playlist.new(name: params[:name])
-    artists = params[:artists].split(", ")
-    tracks = params[:tracks].split(", ")
-    @genres = params[:genres]
-    @track_arr = tracks.map do |track|
-      Track.find_all_tracks(track)
-    end
-    @artist_arr = artists.map {|artist| Artist.find_all_artists(artist)}
-    @track_arr.count.times do
-      @playlist.tracks.build
-    end
-    @artist_arr.count.times do
-      @playlist.artists.build
-    end
+    prepare_fix
   end
 
   def generate
@@ -78,8 +53,12 @@ class PlaylistsController < ApplicationController
   def create
     @playlist = Playlist.new(name: params[:playlist][:name], user_id: session[:user_id])
     @playlist.render_attributes(params[:playlist][:artists_attributes], params[:playlist][:tracks_attributes], params[:playlist][:genres])
-    @playlist.save
-    redirect_to @playlist
+    if @playlist.valid?
+      @playlist.save
+      redirect_to @playlist
+    else
+      render "new"
+    end
   end
 
   def update
@@ -94,6 +73,18 @@ class PlaylistsController < ApplicationController
 
   def set_playlist
     @playlist = Playlist.find(params[:id])
+  end
+
+  def prepare_fix
+    @genres = @playlist.prep_genres(params)
+    @track_arr = @playlist.prep_tracks(params)
+    @artist_arr = @playlist.prep_artists(params)
+    @track_arr.count.times do
+      @playlist.tracks.build
+    end
+    @artist_arr.count.times do
+      @playlist.artists.build
+    end
   end
 
   def set_spotify_user
