@@ -2,8 +2,15 @@
 <h3>By <%= link_to @playlist.user.display_name, @playlist.user %></h3>
 
 <% if @playlist.user_id == session[:user_id] %>
-  <%= link_to "Edit Playlist", "/playlists/#{@playlist.id}/edit" %><br><br>
+  <%= form_tag "/playlists/#{@playlist.id}/edit", method: "get" do %>
+    <%= submit_tag "Edit Playlist" %>
+  <% end %>
+  <%= form_tag playlist_path(@playlist), method: "delete" do %>
+    <%= submit_tag "Delete Playlist" %>
+  <% end %><br><br>
 <% end %>
+
+<%#= link_to "Save Playlist To Spotify", "/playlist/:/save" %>
 
 
 <% if !@playlist.artists.empty? %>
@@ -31,13 +38,13 @@
   </ul>
 <% end %>
 
-<%#= form_tag "/playlists/#{@playlist.id}/generate", method: "get" do %>
+<%= form_tag "/playlists/#{@playlist.id}/generate", method: "get" do %>
   <%#= label_tag "Number Of Tracks" %>
   <!-- <br> -->
   <%#= number_field_tag :num %>
   <!-- <br> -->
-  <%#= submit_tag "Generate Playlist" %>
-<%# end %>
+  <%= submit_tag "Generate Playlist" %>
+<% end %>
 <br>
 <%= form_for @comment do |f| %>
   <%= f.hidden_field :playlist_id, value: "#{@playlist.id}" %>
@@ -48,6 +55,7 @@
   <br>
   <%= f.submit "Save Comment" %>
 <% end %>
+
 <ul>
   <% @playlist.comments.each do |comment| %>
     <label> <strong>Comment by <%= link_to comment.user.display_name, comment.user %>:</strong></label><br>

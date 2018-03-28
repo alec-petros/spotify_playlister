@@ -8,6 +8,12 @@ class PlaylistsController < ApplicationController
     @playlist = Playlist.new
   end
 
+  def destroy
+    set_playlist
+    @playlist.destroy
+    redirect_to playlists_path
+  end
+
   def show
     @comment = Comment.new
     set_playlist
@@ -55,6 +61,9 @@ class PlaylistsController < ApplicationController
   def generate
     set_playlist
     @playlist_array = @playlist.generate.tracks
+    set_spotify_user
+    spotlist = @spotify_user.create_playlist!(@playlist.name)
+    spotlist.add_tracks!(@playlist_array)
     # byebug
   end
 
@@ -78,4 +87,10 @@ class PlaylistsController < ApplicationController
   def set_playlist
     @playlist = Playlist.find(params[:id])
   end
+
+  def set_spotify_user
+    @user = User.find(session[:user_id])
+    @spotify_user = RSpotify::User.new(@user.spot_hash)
+  end
+
 end

@@ -36,18 +36,23 @@ class Playlist < ApplicationRecord
   end
 
   def render_attributes(artists, tracks, genres)
-    # byebug
-    artists.each do |k, obj|
-      self.artists << Artist.find_artist(obj[:spot_id])
+    if artists
+      artists.each do |k, obj|
+        self.artists << Artist.find_artist(obj[:spot_id]) unless !obj[:spot_id]
+      end
     end
-    tracks.each do |k, obj|
-      self.tracks << Track.find_track(obj[:spot_id])
+    if tracks
+      tracks.each do |k, obj|
+        self.tracks << Track.find_track(obj[:spot_id]) unless !obj[:spot_id]
+      end
     end
-    genres.split(", ").each do |genre|
-      self.genres << Genre.find_or_create_by(name: genre)
+    if genres
+      genres.split(", ").each do |genre|
+        self.genres << Genre.find_or_create_by(name: genre)
+      end
     end
   end
-  # 
+  #
   # def belongs_to_current_user
   #   user_id == session[:user_id]
   # end

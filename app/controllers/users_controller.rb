@@ -8,6 +8,14 @@ class UsersController < ApplicationController
     set_user
   end
 
+  def spotify
+    @user = User.find(session[:user_id])
+    spotify_user = RSpotify::User.new(request.env['omniauth.auth'])
+    @user.spot_hash = spotify_user.to_hash
+    @user.save
+    redirect_to @user
+  end
+
   def create
     @user = User.new(user_params)
     if @user.valid?
@@ -28,4 +36,5 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:username, :display_name, :password, :password_confirmation)
   end
+
 end

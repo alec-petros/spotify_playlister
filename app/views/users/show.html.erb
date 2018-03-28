@@ -1,5 +1,8 @@
 <h1><%= @user.display_name %></h1>
 <h3><%= @user.username %></h3>
+<% if @user.id == session[:user_id] %>
+  <%= link_to 'Sign in with Spotify', '/auth/spotify' %>
+<% end %>
 <br>
 <h3>User's Playlists</h3>
 <ul>
