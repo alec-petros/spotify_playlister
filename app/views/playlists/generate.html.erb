@@ -1,4 +1,14 @@
 <h1><%= @playlist.name %></h1>
+
+<% if User.find(session[:user_id]).spot_hash %>
+  <%= form_tag "/playlists/#{@playlist.id}/save", method: "post" do %>
+    <%= hidden_field_tag "uri_arr", @uri_array %>
+    <%= submit_tag "Save Playlist to Spotify" %>
+  <% end %>
+<% else %>
+  <p><%= link_to 'Sign in with Spotify to create a Spotify playlist', '/auth/spotify' %></p>
+<% end %>
+
 <ul>
   <% @playlist_array.each do |track| %>
     <li><%= "#{track.name} - #{track.artists[0].name}" %></li>

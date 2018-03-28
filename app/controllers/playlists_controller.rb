@@ -1,5 +1,8 @@
 class PlaylistsController < ApplicationController
 
+  before_action :require_login
+  skip_before_action :require_login, only: [:index]
+
   def index
     @playlists = Playlist.all.order("created_at DESC")
   end
@@ -12,6 +15,14 @@ class PlaylistsController < ApplicationController
     set_playlist
     @playlist.destroy
     redirect_to playlists_path
+  end
+
+  def save
+    set_playlist
+    set_spotify_user
+    spotlist = @spotify_user.create_playlist!(@playlist.name)
+    spotlist.add_tracks!(params[:uri_arr].split)
+    redirect_to @playlist
   end
 
   def show
@@ -60,11 +71,8 @@ class PlaylistsController < ApplicationController
 
   def generate
     set_playlist
-    @playlist_array = @playlist.generate.tracks
-    set_spotify_user
-    spotlist = @spotify_user.create_playlist!(@playlist.name)
-    spotlist.add_tracks!(@playlist_array)
-    # byebug
+    @playlist_array = @playlist.generate(params[:num]).tracks
+    @uri_array = @playlist_array.map(&:uri)
   end
 
   def create
@@ -91,6 +99,10 @@ class PlaylistsController < ApplicationController
   def set_spotify_user
     @user = User.find(session[:user_id])
     @spotify_user = RSpotify::User.new(@user.spot_hash)
+  end
+
+  def require_login
+    render(:file => File.join(Rails.root, 'public/403.html'), :status => 403, :layout => false) unless session.include? :user_id
   end
 
 end

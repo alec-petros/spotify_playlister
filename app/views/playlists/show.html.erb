@@ -10,9 +10,6 @@
   <% end %><br><br>
 <% end %>
 
-<%#= link_to "Save Playlist To Spotify", "/playlist/:/save" %>
-
-
 <% if !@playlist.artists.empty? %>
   <label>Artists</label>
   <ul>
@@ -39,10 +36,10 @@
 <% end %>
 
 <%= form_tag "/playlists/#{@playlist.id}/generate", method: "get" do %>
-  <%#= label_tag "Number Of Tracks" %>
-  <!-- <br> -->
-  <%#= number_field_tag :num %>
-  <!-- <br> -->
+  <%= label_tag "Number Of Tracks" %>
+  <br>
+  <%= number_field_tag :num, 20 %>
+  <br>
   <%= submit_tag "Generate Playlist" %>
 <% end %>
 <br>

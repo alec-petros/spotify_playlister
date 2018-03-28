@@ -6,8 +6,8 @@ class Playlist < ApplicationRecord
   has_and_belongs_to_many :genres
   accepts_nested_attributes_for :tracks, :artists
 
-  def generate
-    args = {}
+  def generate(amt)
+    args = {limit: amt}
     if !tracks.empty?
       args[:seed_tracks] = tracks.map(&:spot_id)
     end
