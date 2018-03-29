@@ -7,29 +7,26 @@
 
 
   <% if !@playlist.artists.empty? %>
-    <label>Artists</label>
-    <ul>
+    <label id="headers">Artists</label>
       <% @playlist.artists.each do |artist| %>
-        <li><%= link_to artist.name, artist %></li>
+        <p id="playlist_items"><%= link_to artist.name, artist %></p>
       <% end %>
-    </ul>
   <% end %>
+  <div class="ui divider"></div>
   <% if !@playlist.tracks.empty? %>
-    <label>Tracks</label>
-    <ul>
+    <label id="headers">Tracks</label>
       <% @playlist.tracks.each do |track| %>
-        <li><%= link_to track.name, track %></li>
+        <p id="playlist_items"><%= link_to track.name, track %></p>
       <% end %>
-    </ul>
   <% end %>
+  <div class="ui divider"></div>
   <% if !@playlist.genres.empty? %>
-    <label>Genres</label>
-    <ul>
+    <label id="headers">Genres</label>
       <% @playlist.genres.each do |genre| %>
-        <li><%= link_to genre.name, genre %></li>
+        <p id="playlist_items"><%= link_to genre.name, genre %></p>
       <% end %>
-    </ul>
   <% end %>
+  <div class="ui divider"></div>
 
 
   <%= form_tag "/playlists/#{@playlist.id}/generate", method: "get" do %>
@@ -77,6 +74,7 @@
       <strong><%= f.label "Add Comment:" %></strong>
       <br>
       <%= f.text_area :content %>
+      <br>
       <br>
       <%= f.submit "Save Comment", class: "ui green labeled submit icon button" %>
     <% end %>

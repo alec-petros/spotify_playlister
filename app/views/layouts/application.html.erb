@@ -17,13 +17,13 @@
 
     <div class="ui vertical large left visible sidebar menu">
       <a class="item" id="menu_button" href="/">Home</a>
-      <a class="item" id="menu_button" href="<%= "/users/#{session[:user_id]}" %>">Profile</a>
       <a class="item" id="menu_button" href="/playlists/new">New Playlist</a>
 
       <% if !logged_in? %>
         <a class="item" id="menu_button" href="/login">Login</a>
         <a class="item" id="menu_button" href="/signup">Signup</a>
       <% else %>
+        <a class="item" id="menu_button" href="<%= "/users/#{session[:user_id]}" %>">Profile</a>
         <a class="item" id="menu_button" href="/logout">Logout</a>
       <% end %>
     </div>

@@ -1,11 +1,15 @@
+<div class="ui raised very padded text container segment">
+
 <h1>Playlists</h1>
-<h3>Sort By:</h3>
+<div class="ui divider"></div>
+
+<h2>Sort By:</h2>
 <%= form_tag playlists_path, method: "get" do %>
   <%= select_tag :option, options_for_select(["Recent", "Popular All-Time", "Hot"]) %>
   <%= submit_tag "Filter" %>
 <% end %>
-<ul>
+<br>
   <% @playlists.each do |playlist| %>
-    <li style="font-size:30px"><%= link_to playlist.name.downcase, playlist %></li>
+    <p style="font-size:25px"><%= link_to playlist.name.downcase, playlist %></p>
   <% end %>
-</ul>
+</div>

@@ -1,4 +1,8 @@
+<div class="ui raised very padded text container segment">
+
+
 <h1><%= @playlist.name %></h1>
+<div class="ui divider"></div>
 
 <% if User.find(session[:user_id]).spot_hash %>
   <%= form_tag "/playlists/#{@playlist.id}/save", method: "post" do %>
@@ -13,3 +17,5 @@
     <li><%= "#{track.name} - #{track.artists[0].name}" %></li>
   <% end %>
 </ul>
+
+</div>
