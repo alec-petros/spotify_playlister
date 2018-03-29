@@ -3,11 +3,10 @@
 
 <h1><%= @playlist.name %></h1>
 <div class="ui divider"></div>
-
-<% if User.find(session[:user_id]).spot_hash %>
+<% if !current_user.spot_hash.empty? %>
   <%= form_tag "/playlists/#{@playlist.id}/save", method: "post" do %>
     <%= hidden_field_tag "uri_arr", @uri_array %>
-    <%= submit_tag "Save Playlist to Spotify" %>
+    <%= submit_tag "Save Playlist to Spotify", class: "ui button" %>
   <% end %>
 <% else %>
   <p><%= link_to 'Sign in with Spotify to create a Spotify playlist', '/auth/spotify' %></p>

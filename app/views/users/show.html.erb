@@ -2,8 +2,8 @@
 <%= @user.display_name %> - <%= @user.username %></div>
 
 <% if @user.id == session[:user_id] %>
-  <button class="sign_in ui green button" href="/auth/spotify">Sign In With Spotify</button>
-  <%#= link_to 'Sign in with Spotify', '/auth/spotify' %>
+  <!-- <button class="sign_in ui green button" href="/auth/spotify">Sign In With Spotify</button> -->
+  <%= link_to 'Sign in with Spotify', '/auth/spotify' %>
 <% end %>
 <br>
 <br>
