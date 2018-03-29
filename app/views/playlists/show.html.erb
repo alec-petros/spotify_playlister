@@ -1,11 +1,10 @@
 <div class="playlist_title ui raised very padded text container segment">
   <p> <%= @playlist.name %> - by <%= link_to @playlist.user.display_name, @playlist.user %></p>
 </div>
-
+<% if flash[:notice] %>
+  <div class="notice ui railsed very padded text container segment"><%= flash[:notice] %></div>
+<% end %>
 <div class="playlist_display ui raised very padded text container segment">
-
-
-
   <% if !@playlist.artists.empty? %>
     <label id="headers">Artists</label>
       <% @playlist.artists.each do |artist| %>
