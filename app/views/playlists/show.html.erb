@@ -1,5 +1,7 @@
-<h2><%= @playlist.name %></h2>
-<h3>By <%= link_to @playlist.user.display_name, @playlist.user %></h3>
+<div class="title">
+  <h2><%= @playlist.name %></h2>
+  <h3>By <%= link_to @playlist.user.display_name, @playlist.user %></h3>
+</div>
 <div class="container">
   <div class="playlist_list">
     <% if @playlist.user_id == session[:user_id] %>
