@@ -1,13 +1,24 @@
-<h1><%= @artist.name %></h1>
-<label>Genres:</label>
-<ul>
-  <% @artist.genres.each do |genre| %>
-    <li><%= link_to genre.name, genre %></li>
-  <% end %>
-</ul>
-<label>Recent Playlists:</label>
-<ul>
-  <% @artist.recent_playlists.each do |playlist| %>
-    <li><%= link_to playlist.name, playlist %></li>
-  <% end %>
-</ul>
+<div class="show_block">
+  <h1><%= @artist.name %></h1>
+  <label>Popularity: <% (@artist.popularity/20).times do %>
+    <%= image_tag "dancer.png", width: '28', height: '32' %>
+    <% end %>
+  </label>
+  <br><br>
+  <label>Genres:</label>
+  <ul>
+    <% @artist.genres.each do |genre| %>
+      <li><%= link_to genre.name, genre %></li>
+    <% end %>
+  </ul>
+  <label>Recent Playlists:</label>
+  <ul>
+    <% @artist.recent_playlists.each do |playlist| %>
+      <li><%= link_to playlist.name, playlist %></li>
+    <% end %>
+  </ul>
+</div>
+<div class="profile_img">
+  <img src="<%= @artist.images[0]["url"] %>" alt="<%= @artist.name %>" id="profile">
+
+</div>

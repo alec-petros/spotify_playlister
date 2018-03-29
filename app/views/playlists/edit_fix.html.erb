@@ -2,7 +2,7 @@
 
 <div class="ui dropdown">
   <%= form_for @playlist, url: {action: "update"} do |f| %>
-    <%= f.hidden_field :name, value: "#{@playlist.name}" %>
+    <%= f.hidden_field :name, value: "#{@name}" %>
     <%= f.hidden_field :genres, value: "#{@genres}" %>
 
     <% i = 0 %>

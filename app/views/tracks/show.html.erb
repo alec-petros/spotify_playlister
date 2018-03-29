@@ -1,17 +1,23 @@
-<h1><%= @track.name %></h1>
-<h3><%= link_to @track.artist.name, @track.artist %></h3> <br>
-<% if @track.artist.genres %>
-  <label>Genres:</label>
+<div class="show_block">
+  <h1><%= @track.name %></h1>
+  <h3><%= link_to @track.artist.name, @track.artist %></h3> <br>
+  <% if @track.artist.genres %>
+    <label>Genres:</label>
+    <ul>
+      <% @track.artist.genres.each do |genre| %>
+        <li><%= link_to genre.name, genre %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  <br>
+  <label>Recent Playlists:</label>
   <ul>
-    <% @track.artist.genres.each do |genre| %>
-      <li><%= link_to genre.name, genre %></li>
+    <% @track.recent_playlists.each do |playlist| %>
+      <li><%= link_to playlist.name, playlist %></li>
     <% end %>
   </ul>
-<% end %>
-<br>
-<label>Recent Playlists:</label>
-<ul>
-  <% @track.recent_playlists.each do |playlist| %>
-    <li><%= link_to playlist.name, playlist %></li>
-  <% end %>
-</ul>
+</div>
+<div class="profile_img">
+  <img src="<%= @track.images[0]["url"] %>" alt="<%= @track.name %>" id="profile">
+
+</div>
