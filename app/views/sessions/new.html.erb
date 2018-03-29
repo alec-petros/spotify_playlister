@@ -1,7 +1,8 @@
+
 <div class="center jumbotron">
   <h1>Sign In</h1><br>
 
-<font color=#ffffff><%= form_tag login_path, method: "post" do %>
+<%= form_tag login_path, method: "post" do %>
   <p id="fields"><%= label_tag :username %></p>
   <%= text_field_tag :username %>
   <br>
@@ -10,6 +11,7 @@
   <%= password_field_tag :password %>
   <br>
   <br>
-  <%= submit_tag "Login", class: "btn btn-primary btn-xlarge" %>
+  <br>
+  <%= submit_tag "Login", class: "button" %>
 <% end %>
 </div>

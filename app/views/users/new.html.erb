@@ -1,15 +1,21 @@
+<div class="center jumbotron">
+  <h1>Sign Up</h1>
+
 <%= form_for @user do |f| %>
-  <%= f.label :username %>
+  <p id="fields"><%= f.label :username %></p>
   <%= f.text_field :username %>
   <br>
-  <%= f.label :display_name %>
+  <p id="fields"><%= f.label :display_name %></p>
   <%= f.text_field :display_name %>
   <br>
-  <%= f.label :password %>
+  <p id="fields"><%= f.label :password %></p>
   <%= f.password_field :password %>
   <br>
-  <%= f.label :password_confirmation %>
+  <p id="fields"><%= f.label :password_confirmation %></p>
   <%= f.password_field :password_confirmation %>
   <br>
-  <%= f.submit "Create User" %>
+  <br>
+  <%= f.submit "Create User", class: "button" %>
 <% end %>
+
+</div>
