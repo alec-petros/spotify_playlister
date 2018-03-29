@@ -37,7 +37,7 @@ class Track < ApplicationRecord
   def self.spot_track_find(spot_id)
     track = RSpotify::Track.find(spot_id)
     artist = track.artists[0].id
-    output = Track.new(name: track.name, spot_id: track.id, artist: Artist.find_artist(artist))
+    output = Track.new(name: track.name, spot_id: track.id, artist: Artist.find_artist(artist), images: track.album.images)
     output.save
     output
   end

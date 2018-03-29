@@ -21,7 +21,7 @@ class Artist < ApplicationRecord
   def self.spot_artist_find(spot_id)
     # byebug
     artist = RSpotify::Artist.find(spot_id)
-    output = Artist.new(name: artist.name, spot_id: artist.id)
+    output = Artist.new(name: artist.name, spot_id: artist.id, images: artist.images, popularity: artist.popularity)
     artist.genres.each do |genre|
       output.genres << Genre.find_or_create_by(name: genre)
     end
