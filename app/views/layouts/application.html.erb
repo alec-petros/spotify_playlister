@@ -14,16 +14,16 @@
   </head>
 
   <body>
-    <div class="ui huge header">Huge Header</div>
 
-    <div class="ui left vertical menu sidebar">
-      <a class="item"><%= link_to 'Home', '/' %></a>
-      <%= link_to 'Profile', "/users/#{session[:user_id]}" %><br>
-      <%= link_to "New Playlist", "/playlists/new" %><br>
+    <div class="ui vertical left visible sidebar menu">
+      <a class="item" href="/">Home</a>
+      <a class="item" href="<%= "/users/#{session[:user_id]}" %>">Profile</a>
+      <a class="item" href="/playlists/new">New Playlist</a>
+
       <% if !logged_in? %>
-        <%= link_to "Login", "/login", method: "get" %>
+        <a class="item" href="/login">Login</a>
       <% else %>
-        <%= link_to "Logout", "/logout", method: "get" %>
+        <a class="item" href="/logout">Logout</a>
       <% end %>
     </div>
 
