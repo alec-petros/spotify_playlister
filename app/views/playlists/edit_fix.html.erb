@@ -1,22 +1,24 @@
 <h1>Edit Fix Seeds</h1>
 
-<%= form_for @playlist, url: {action: "update"} do |f| %>
-  <%= f.hidden_field :name, value: "#{@playlist.name}" %>
-  <%= f.hidden_field :genres, value: "#{@genres}" %>
+<div class="ui dropdown">
+  <%= form_for @playlist, url: {action: "update"} do |f| %>
+    <%= f.hidden_field :name, value: "#{@name}" %>
+    <%= f.hidden_field :genres, value: "#{@genres}" %>
 
-  <% i = 0 %>
-  <%= f.fields_for :artists do |tf| %>
-    <%= tf.label "Artist Fix" %><br>
-    <%= tf.collection_select(:spot_id, @artist_arr[i], :id, :name) %><br>
-    <% i += 1 %>
+    <% i = 0 %>
+    <%= f.fields_for :artists do |tf| %>
+      <%= tf.label "Artist Fix" %><br>
+      <%= tf.collection_select(:spot_id, @artist_arr[i], :id, :name, {class: "menu"}) %><br>
+      <% i += 1 %>
+    <% end %>
+
+    <% i = 0 %>
+    <%= f.fields_for :tracks do |tf| %>
+      <%= tf.label "Track Fix" %><br>
+      <%= tf.collection_select(:spot_id, @track_arr[i], :id, :track_string) %><br>
+      <% i += 1 %>
+    <% end %>
+
+    <%= f.submit "Save Changes" %>
   <% end %>
-
-  <% i = 0 %>
-  <%= f.fields_for :tracks do |tf| %>
-    <%= tf.label "Track Fix" %><br>
-    <%= tf.collection_select(:spot_id, @track_arr[i], :id, :track_string) %><br>
-    <% i += 1 %>
-  <% end %>
-
-  <%= f.submit "Save Changes" %>
-<% end %>
+</div>

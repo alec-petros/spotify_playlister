@@ -42,6 +42,7 @@ class PlaylistsController < ApplicationController
   end
 
   def edit_fix
+    @name = params[:name]
     set_playlist
     prepare_fix
   end
@@ -53,8 +54,13 @@ class PlaylistsController < ApplicationController
 
   def generate
     set_playlist
-    @playlist_array = @playlist.generate(params[:num]).tracks
-    @uri_array = @playlist_array.map(&:uri)
+    begin
+      @playlist_array = @playlist.generate(params[:num]).tracks
+      @uri_array = @playlist_array.map(&:uri)
+    rescue
+      flash[:notice] = "Failed to generate playlist. Try slimming down your seeds."
+      redirect_to @playlist
+    end
   end
 
   def create

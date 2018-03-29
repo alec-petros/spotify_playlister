@@ -1,11 +1,16 @@
 
+<div class="ui raised very padded text container segment login">
 
-<%= form_tag login_path, method: "post" do %>
+<%= form_tag login_path, method: "post", class: "ui form signup" do %>
   <%= label_tag :username %>
   <%= text_field_tag :username %>
+  <br>
   <br>
   <%= label_tag :password %>
   <%= password_field_tag :password %>
   <br>
-  <%= submit_tag "Login" %>
+  <br>
+  <%= submit_tag "Login", class: "ui button"%>
 <% end %>
+
+</div>

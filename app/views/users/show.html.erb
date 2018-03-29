@@ -1,12 +1,18 @@
-<h1><%= @user.display_name %></h1>
-<h3><%= @user.username %></h3>
+<div class="username playlist_title ui raised very padded text container segment">
+<%= @user.display_name %> - <%= @user.username %></div>
+
 <% if @user.id == session[:user_id] %>
-  <%= link_to 'Sign in with Spotify', '/auth/spotify' %>
+  <button class="sign_in ui green button" href="/auth/spotify">Sign In With Spotify</button>
+  <%#= link_to 'Sign in with Spotify', '/auth/spotify' %>
 <% end %>
 <br>
-<h3>User's Playlists</h3>
-<ul>
-  <% @user.playlists.each do |playlist| %>
-    <li><%= link_to playlist.name, playlist %></li>
+<br>
+
+<div class="ui raised very padded text container segment">
+<h3 id="user_playlist">User's Playlists</h3>
+<br>
+  <div id="each_playlist"><% @user.playlists.each do |playlist| %>
+    <%= link_to playlist.name, playlist %><br>
   <% end %>
-</ul>
+</div>
+</div>
