@@ -1,14 +1,10 @@
-<div class="playlist_display"><h2><%= @playlist.name %></h2>
-  <h3>By <%= link_to @playlist.user.display_name, @playlist.user %></h3>
+<div class="playlist_title ui raised very padded text container segment">
+  <p> <%= @playlist.name %> - by <%= link_to @playlist.user.display_name, @playlist.user %></p>
+</div>
 
-  <% if @playlist.user_id == session[:user_id] %>
-    <%= form_tag "/playlists/#{@playlist.id}/edit", method: "get" do %>
-      <%= submit_tag "Edit Playlist" %>
-    <% end %>
-    <%= form_tag playlist_path(@playlist), method: "delete" do %>
-      <%= submit_tag "Delete Playlist" %>
-    <% end %><br><br>
-  <% end %>
+<div class="playlist_display ui raised very padded text container segment">
+
+
 
   <% if !@playlist.artists.empty? %>
     <label>Artists</label>
@@ -35,22 +31,38 @@
     </ul>
   <% end %>
 
+
   <%= form_tag "/playlists/#{@playlist.id}/generate", method: "get" do %>
     <%= label_tag "Number Of Tracks" %>
     <br>
     <%= number_field_tag :num, 20 %>
     <br>
-    <%= submit_tag "Generate Playlist" %>
-  <% end %></div>
-<div class="comments">
+    <%= submit_tag "Generate Playlist", class: "ui button" %>
+  <% end %>
+  <br>
+  <div class="ui divider"></div>
+  <div class="ui vertical basic buttons">
+  <% if @playlist.user_id == session[:user_id] %>
+    <%= form_tag "/playlists/#{@playlist.id}/edit", method: "get" do %>
+      <%= submit_tag "Edit Playlist", class: "ui button" %>
+    <% end %>
+    <%= form_tag playlist_path(@playlist), method: "delete" do %>
+      <%= submit_tag "Delete Playlist", class: "ui button" %>
+    <% end %>
+  <% end %>
+  </div>
+<br>
+</div>
+
+<div class="comments ui raised very padded text container segment">
   <%= form_for @comment do |f| %>
     <%= f.hidden_field :playlist_id, value: "#{@playlist.id}" %>
     <%= f.hidden_field :user_id, value: "#{session[:user_id]}" %>
-    <%= f.label "Add Comment:" %>
+    <strong><%= f.label "Add Comment:" %></strong>
     <br>
     <%= f.text_area :content %>
     <br>
-    <%= f.submit "Save Comment" %>
+    <%= f.submit "Save Comment", class: "ui button" %>
   <% end %>
 
   <ul>
