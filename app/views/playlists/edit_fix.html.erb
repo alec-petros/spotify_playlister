@@ -8,7 +8,7 @@
     <% i = 0 %>
     <%= f.fields_for :artists do |tf| %>
       <%= tf.label "Artist Fix" %><br>
-      <%= tf.collection_select(:spot_id, @artist_arr[i], :id, :name) %><br>
+      <%= tf.collection_select(:spot_id, @artist_arr[i], :id, :name, {class: "menu"}) %><br>
       <% i += 1 %>
     <% end %>
 

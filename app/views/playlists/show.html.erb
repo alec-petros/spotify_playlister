@@ -55,20 +55,31 @@
 </div>
 
 <div class="comments ui raised very padded text container segment">
-  <%= form_for @comment do |f| %>
-    <%= f.hidden_field :playlist_id, value: "#{@playlist.id}" %>
-    <%= f.hidden_field :user_id, value: "#{session[:user_id]}" %>
-    <strong><%= f.label "Add Comment:" %></strong>
-    <br>
-    <%= f.text_area :content %>
-    <br>
-    <%= f.submit "Save Comment", class: "ui button" %>
-  <% end %>
+  <% @playlist.comments.each do |comment| %>
 
-  <ul>
-    <% @playlist.comments.each do |comment| %>
-      <label> <strong>Comment by <%= link_to comment.user.display_name, comment.user %>:</strong></label><br>
-      <p><%= comment.content %></p>
+    <div class="content">
+      <div class="author">
+        <%= link_to comment.user.display_name, comment.user %>
+      </div>
+      <div class="metadata">
+        <span class="date"><%= comment.created_at.strftime("%B %e, %Y at %H:%M") %></span>
+      </div>
+      <div class="text">
+        <%= comment.content %>
+      </div>
+    </div>
+    <div class="ui divider"></div>
+  <% end %>
+  <div class="ui reply form">
+    <%= form_for @comment do |f| %>
+      <%= f.hidden_field :playlist_id, value: "#{@playlist.id}" %>
+      <%= f.hidden_field :user_id, value: "#{session[:user_id]}" %>
+      <strong><%= f.label "Add Comment:" %></strong>
+      <br>
+      <%= f.text_area :content %>
+      <br>
+      <%= f.submit "Save Comment", class: "ui green labeled submit icon button" %>
     <% end %>
-  </ul>
+
+  </div>
 </div>
