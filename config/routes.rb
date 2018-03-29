@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'playlists#index'
+  root to: 'sessions#home'
   resources :artists, only: [:show]
   resources :comments, only: [:new, :create, :show]
   resources :comments, only: [:show]

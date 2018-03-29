@@ -110,3 +110,12 @@
 .login {
   /* text-align: center; */
 }
+
+.homepage {
+  text-align: center;
+  margin-top: 10%;
+}
+#home_title {
+  font-size: 120px;
+  font-family: 'Orbitron', sans-serif;
+}

@@ -1,5 +1,7 @@
 class SessionsController < ApplicationController
 
+  layout 'home', only: :home
+
   def new
   end
 
@@ -21,5 +23,8 @@ class SessionsController < ApplicationController
 
   def about
 
+  end
+
+  def home
   end
 end
