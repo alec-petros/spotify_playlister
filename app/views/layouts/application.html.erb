@@ -2,6 +2,8 @@
 <html>
   <head>
     <title>SpotifyPlaylister</title>
+    <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
+
     <%= csrf_meta_tags %>
 
     <title>Semantic UI CDN</title>
@@ -12,11 +14,14 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+  <style>
+  body {background-color: #ebeef4;}
+  </style>
 
   <body>
 
     <div class="ui vertical large left visible sidebar menu">
-      <a class="item" id="menu_button" href="/playlists">Home</a>
+      <a class="item" id="menu_button1" href="/playlists">Algorythm</a>
       <a class="item" id="menu_button" href="/about">About</a>
       <a class="item" id="menu_button" href="/playlists/new">New Playlist</a>
 

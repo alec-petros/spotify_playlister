@@ -1,10 +1,12 @@
-<div class="username playlist_title ui raised very padded text container segment">
-<%= @user.display_name %> - <%= @user.username %></div>
+<div class="playlist_title ui raised very padded text container segment">
+  <p id="username_header"><%= @user.display_name %> - <%= @user.username %></p>
 
-<% if @user.id == session[:user_id] %>
-  <!-- <button class="sign_in ui green button" href="/auth/spotify">Sign In With Spotify</button> -->
-  <%= link_to 'Sign in with Spotify', '/auth/spotify' %>
-<% end %>
+  <div id="spotify_link"><% if @user.id == session[:user_id] %>
+    <!-- <button class="sign_in ui green button" href="/auth/spotify">Sign In With Spotify</button> -->
+    <p class="spotify_link"><%= link_to 'Sign in with Spotify', '/auth/spotify' %></p>
+      <% end %>
+  </div>
+</div>
 <br>
 <br>
 

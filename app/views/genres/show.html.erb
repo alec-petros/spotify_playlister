@@ -1,4 +1,8 @@
-<h1><%= @genre.name %></h1>
+<div class="ui raised very padded text container segment">
+
+<h1 id="artist_name"><%= @genre.name %></h1>
+<div class="ui divider"></div>
+
 <br>
 <label>Recent Playlists:</label>
 <ul>
@@ -6,3 +10,5 @@
     <li><%= link_to playlist.name, playlist %></li>
   <% end %>
 </ul>
+
+</div>

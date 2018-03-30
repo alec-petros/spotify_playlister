@@ -17,6 +17,12 @@
    font-weight: bold;
    font-size: 20px;
  }
+
+ #menu_button1 {
+   font-weight: bold;
+   font-size: 24px;
+   font-family: 'Orbitron', sans-serif;
+ }
 .pusher {
   width: 70%;
   /* max-width: 1000px; */
@@ -49,9 +55,10 @@
   left: 43%;
 }
 
-.username {
+#username_header {
   font-weight: bold;
-  font-size: 40px;
+  font-size: 45px;
+  font-family: 'Orbitron', sans-serif;
 }
 
 .signup {
@@ -123,4 +130,32 @@
 #titles {
   font-weight: bold;
   font-size: 19px;
+}
+
+.playlist_header {
+  font-weight: bold;
+  font-size: 45px;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.spotify_link {
+  text-align: center;
+  font-size: 19px;
+}
+
+#artist_name {
+  font-weight: bold;
+  font-size: 35px;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.app_title {
+  font-weight: 900;
+  font-size: 60px;
+  font-family: 'Orbitron', sans-serif;
+}
+
+#about_page {
+  font-size: 20px;
+  text-align: center;
 }

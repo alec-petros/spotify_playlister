@@ -1,6 +1,11 @@
+<div class="ui raised very padded text container segment">
+
 <div class="show_block">
-  <h1><%= @track.name %></h1>
+  <h1 id="artist_name"><%= @track.name %></h1>
+  <div class="ui divider"></div>
+
   <h3><%= link_to @track.artist.name, @track.artist %></h3> <br>
+
   <% if @track.artist.genres %>
     <label>Genres:</label>
     <ul>
@@ -20,4 +25,5 @@
 <div class="profile_img">
   <img src="<%= @track.images[0]["url"] %>" alt="<%= @track.name %>" id="profile">
 
+</div>
 </div>
