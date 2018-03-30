@@ -159,3 +159,8 @@
   font-size: 20px;
   text-align: center;
 }
+body {
+   background-image: url("silhouette.jpg");
+   background-size: cover;
+   /* background-color: #cccccc; */
+}
