@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180329194336) do
+ActiveRecord::Schema.define(version: 20180330164648) do
 
   create_table "artists", force: :cascade do |t|
     t.string "name"
@@ -71,6 +71,17 @@ ActiveRecord::Schema.define(version: 20180329194336) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "images"
+    t.float "acousticness"
+    t.float "danceability"
+    t.float "energy"
+    t.float "instrumentalness"
+    t.float "liveness"
+    t.float "speechiness"
+    t.float "tempo"
+    t.float "valence"
+    t.integer "time_signature"
+    t.integer "key"
+    t.integer "mode"
   end
 
   create_table "users", force: :cascade do |t|

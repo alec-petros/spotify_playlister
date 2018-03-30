@@ -21,6 +21,21 @@
       <li><%= link_to playlist.name, playlist %></li>
     <% end %>
   </ul>
+  <br>
+  <label>Song Analysis:</label>
+  <ul>
+    <li><strong>Acousticness:</strong> <%= (@track.acousticness * 10).round(2) %></li>
+    <li><strong>Danceability:</strong> <%= (@track.danceability * 10).round(2) %></li>
+    <li><strong>Energy:</strong> <%= (@track.energy * 10).round(2) %></li>
+    <li><strong>Instrumentalness:</strong> <%= (@track.instrumentalness * 10).round(2) %></li>
+    <li><strong>Liveness:</strong> <%= (@track.liveness * 10).round(2) %></li>
+    <li><strong>Speechiness:</strong> <%= (@track.speechiness * 10).round(2) %></li>
+    <li><strong>Tempo:</strong> <%= @track.tempo.round(2) %> BPM</li>
+    <li><strong>Valence:</strong> <%= (@track.valence * 10).round(2) %></li>
+    <li><strong>Time Signature:</strong> <%= @track.time_signature %></li>
+    <li><strong>Key:</strong> <%= @track.key %></li>
+    <li><strong>Mode:</strong> <% if @track.mode == 1 %> Major <% else %> Minor <% end %></li>
+  </ul>
 </div>
 <div class="profile_img">
   <img src="<%= @track.images[0]["url"] %>" alt="<%= @track.name %>" id="profile">
