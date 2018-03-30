@@ -119,3 +119,8 @@
   font-size: 120px;
   font-family: 'Orbitron', sans-serif;
 }
+
+#titles {
+  font-weight: bold;
+  font-size: 19px;
+}

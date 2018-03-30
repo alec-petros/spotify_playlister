@@ -1,17 +1,23 @@
+<div class="ui raised very padded text container segment">
+
 <div class="show_block">
   <h1><%= @artist.name %></h1>
-  <label>Popularity: <% (@artist.popularity/20).times do %>
+  <div class="ui divider"></div>
+
+  <label id="titles">Popularity: <% (@artist.popularity/20).times do %>
     <%= image_tag "dancer.png", width: '28', height: '32' %>
     <% end %>
   </label>
-  <br><br>
-  <label>Genres:</label>
+  <div class="ui divider"></div>
+
+  <br>
+  <label id="titles">Genres:</label>
   <ul>
     <% @artist.genres.each do |genre| %>
       <li><%= link_to genre.name, genre %></li>
     <% end %>
   </ul>
-  <label>Recent Playlists:</label>
+  <label id="titles">Recent Playlists:</label>
   <ul>
     <% @artist.recent_playlists.each do |playlist| %>
       <li><%= link_to playlist.name, playlist %></li>
@@ -21,4 +27,5 @@
 <div class="profile_img">
   <img src="<%= @artist.images[0]["url"] %>" alt="<%= @artist.name %>" id="profile">
 
+</div>
 </div>
