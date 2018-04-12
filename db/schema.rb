@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20180330164648) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "artists", force: :cascade do |t|
     t.string "name"
     t.string "spot_id"
@@ -22,13 +25,13 @@ ActiveRecord::Schema.define(version: 20180330164648) do
   end
 
   create_table "artists_genres", id: false, force: :cascade do |t|
-    t.integer "artist_id", null: false
-    t.integer "genre_id", null: false
+    t.bigint "artist_id", null: false
+    t.bigint "genre_id", null: false
   end
 
   create_table "artists_playlists", id: false, force: :cascade do |t|
-    t.integer "playlist_id", null: false
-    t.integer "artist_id", null: false
+    t.bigint "playlist_id", null: false
+    t.bigint "artist_id", null: false
   end
 
   create_table "comments", force: :cascade do |t|
@@ -37,7 +40,6 @@ ActiveRecord::Schema.define(version: 20180330164648) do
     t.string "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "comment_count"
   end
 
   create_table "genres", force: :cascade do |t|
@@ -47,21 +49,21 @@ ActiveRecord::Schema.define(version: 20180330164648) do
   end
 
   create_table "genres_playlists", id: false, force: :cascade do |t|
-    t.integer "playlist_id", null: false
-    t.integer "genre_id", null: false
+    t.bigint "playlist_id", null: false
+    t.bigint "genre_id", null: false
   end
 
   create_table "playlists", force: :cascade do |t|
     t.string "name"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
     t.integer "comments_count"
   end
 
   create_table "playlists_tracks", id: false, force: :cascade do |t|
-    t.integer "playlist_id", null: false
-    t.integer "track_id", null: false
+    t.bigint "playlist_id", null: false
+    t.bigint "track_id", null: false
   end
 
   create_table "tracks", force: :cascade do |t|
